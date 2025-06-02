@@ -23,12 +23,12 @@ function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-5 text-center"  style={{ height: '100vh'}}>
+    <section id="projects" className="py-5 text-center" style={{ minHeight: '100vh', backgroundColor: '#f9f9f9' }}>
       <div className="container">
-        <h2 className='mb-5'>Projects</h2>
-        <div className="row">
+        <h2 className="mb-5">Projects</h2>
+        <div className="row justify-content-center">
           {projectList.map((project, index) => (
-            <div className="col-md-6 mb-4" key={index}>
+            <div className="col-12 col-md-6 col-lg-4 mb-4" key={index}>
               <div className="card h-100 shadow-sm">
                 <div className="card-body d-flex flex-column">
                   <h5 className="card-title">{project.title}</h5>
@@ -36,7 +36,7 @@ function Projects() {
                   <div className="mt-auto">
                     <a
                       href={project.github}
-                      className="btn btn-outline-dark me-2"
+                      className="btn btn-outline-dark me-2 mb-2"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -44,7 +44,7 @@ function Projects() {
                     </a>
                     <a
                       href={project.live}
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary mb-2"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

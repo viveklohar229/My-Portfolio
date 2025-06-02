@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import '../App.css'
+import '../App.css';
+
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -18,55 +19,63 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="py-5 bg-light contact-section" style={{ minHeight: '100vh' }}>
+    <section
+      id="contact"
+      className="py-5 contact-section d-flex align-items-center"
+      style={{ minHeight: '100vh', backgroundColor: '#f1f1f1' }}
+    >
       <div className="container">
-        <h2 className="mb-4 text-center">Contact Me</h2>
-        <form onSubmit={handleSubmit} noValidate>
-          <div className="mb-4 form-floating">
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            <label htmlFor="name">Name</label>
-          </div>
+        <h2 className="mb-5 text-center">Contact Me</h2>
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <form onSubmit={handleSubmit} noValidate>
+              <div className="mb-4 form-floating">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="name"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+                <label htmlFor="name">Name</label>
+              </div>
 
-          <div className="mb-4 form-floating">
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              placeholder="your.email@example.com"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <label htmlFor="email">Email</label>
-          </div>
+              <div className="mb-4 form-floating">
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  placeholder="your.email@example.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+                <label htmlFor="email">Email</label>
+              </div>
 
-          <div className="mb-4 form-floating">
-            <textarea
-              className="form-control"
-              id="message"
-              placeholder="Your message..."
-              rows="5"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            />
-            <label htmlFor="message">Message</label>
-          </div>
+              <div className="mb-4 form-floating">
+                <textarea
+                  className="form-control"
+                  id="message"
+                  placeholder="Your message..."
+                  style={{ height: '150px' }}
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                />
+                <label htmlFor="message">Message</label>
+              </div>
 
-          <div className="text-center">
-            <button type="submit" className="btn btn-primary btn-lg px-5">
-              Send Message
-            </button>
+              <div className="text-center">
+                <button type="submit" className="btn btn-primary btn-lg px-5">
+                  Send Message
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </section>
   );

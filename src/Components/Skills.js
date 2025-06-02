@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import '../App.css'
+import '../App.css';
+
 export default function Skills() {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    // Animate once on mount
-    setTimeout(() => setAnimate(true), 100); // small delay to trigger transition properly
+    setTimeout(() => setAnimate(true), 100); // delay to trigger animation
   }, []);
 
   return (
-      <section id="skills" className="p-5  fade-in" style={{ height: '100vh'}}>
+    <section id="skills" className="py-5 fade-skill-in" style={{ minHeight: '100vh', backgroundColor: '#f8f9fa' }}>
       <div className="container">
         <h2 className="text-center mb-5">My Skills</h2>
         <div className="row">
           {/* Frontend Skills */}
-          <div className="col-md-4 mb-4">
-            <h5>Frontend</h5>
+          <div className="col-12 col-md-4 mb-4">
+            <h5 className="text-center text-md-start">Frontend</h5>
             <Skill name="React.js" width="90%" animate={animate} />
             <Skill name="HTML5 & CSS3" width="95%" animate={animate} />
             <Skill name="JavaScript (ES6+)" width="90%" animate={animate} />
@@ -24,8 +24,8 @@ export default function Skills() {
           </div>
 
           {/* Backend Skills */}
-          <div className="col-md-4 mb-4">
-            <h5>Backend</h5>
+          <div className="col-12 col-md-4 mb-4">
+            <h5 className="text-center text-md-start">Backend</h5>
             <Skill name="Node.js" width="88%" animate={animate} />
             <Skill name="Express.js" width="85%" animate={animate} />
             <Skill name="MongoDB" width="80%" animate={animate} />
@@ -34,8 +34,8 @@ export default function Skills() {
           </div>
 
           {/* Tools and Others */}
-          <div className="col-md-4 mb-4">
-            <h5>Tools & Other</h5>
+          <div className="col-12 col-md-4 mb-4">
+            <h5 className="text-center text-md-start">Tools & Other</h5>
             <Skill name="Cloudinary" width="85%" animate={animate} />
             <Skill name="Git & GitHub" width="90%" animate={animate} />
             <Skill name="Razorpay Integration" width="80%" animate={animate} />
@@ -50,25 +50,19 @@ export default function Skills() {
 
 function Skill({ name, width, animate }) {
   return (
-    <div style={{ marginBottom: '1rem' }}>
-      <label>{name}</label>
-      <div style={{
-        height: '12px',
-        background: '#e0e0e0',
-        borderRadius: '10px',
-        overflow: 'hidden',
-        marginTop: '4px',
-      }}>
+    <div className="mb-3">
+      <label className="d-block">{name}</label>
+      <div className="progress" style={{ height: '12px', borderRadius: '10px', background: '#e0e0e0' }}>
         <div
+          className="progress-bar"
+          role="progressbar"
           style={{
-            height: '100%',
             width: animate ? width : '0%',
             background: 'linear-gradient(90deg, #007bff, #00c6ff)',
-            borderRadius: '10px',
             transition: 'width 2s ease-in-out',
-            willChange: 'width',
+            borderRadius: '10px',
           }}
-        />
+        ></div>
       </div>
     </div>
   );

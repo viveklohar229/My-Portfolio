@@ -77,6 +77,7 @@ body {
   background-color: #e2e2e2;
   text-align: center;
   padding: 4rem 0;
+  overflow: hidden;
 }
 
 .hero-section h2 span {
@@ -256,5 +257,18 @@ body {
   form {
     max-width: 600px;
     margin: 0 auto;
+  }
+}
+
+.fade-skill-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
