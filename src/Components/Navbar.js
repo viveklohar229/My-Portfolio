@@ -4,10 +4,7 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -15,10 +12,16 @@ function Navbar() {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const yOffset = -80; 
+      const yOffset = -80;
       const y =
-        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        element.getBoundingClientRect().top +
+        window.pageYOffset +
+        yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
+
+      // 🔥 CLOSE MOBILE MENU AFTER CLICK
+      const nav = document.getElementById("navbarNav");
+      nav.classList.remove("show");
     }
   };
 
@@ -32,18 +35,18 @@ function Navbar() {
     >
       <div className="container">
         <a
-          className="navbar-brand fw-bold"
+          className="navbar-brand fw-bold text-white"
           href="#home"
           onClick={(e) => {
             e.preventDefault();
             scrollToSection("home");
           }}
         >
-          <span className="text-white">Vivek Vishwakarma</span>
+          Vivek Vishwakarma
         </a>
 
         <button
-          className="navbar-toggler"
+          className="navbar-toggler border-0"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -52,11 +55,11 @@ function Navbar() {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto align-items-lg-center">
+          <ul className="navbar-nav ms-auto text-center">
             {menuItems.map((item) => (
               <li className="nav-item" key={item}>
                 <a
-                  className="nav-link px-3 text-capitalize"
+                  className="nav-link text-white px-3 text-capitalize"
                   href={`#${item}`}
                   onClick={(e) => {
                     e.preventDefault();
@@ -67,7 +70,8 @@ function Navbar() {
                 </a>
               </li>
             ))}
-            <li className="nav-item ms-lg-3">
+
+            <li className="nav-item mt-2 mt-lg-0 ms-lg-3">
               <a
                 href="#contact"
                 className="btn btn-warning btn-sm px-3"
@@ -79,13 +83,14 @@ function Navbar() {
                 Hire Me
               </a>
             </li>
-            <li className="nav-item ms-lg-3">
+
+            <li className="nav-item mt-2 mt-lg-0 ms-lg-3">
               <a
                 href="./vivekExperience.pdf"
-                className="btn btn-warning btn-sm px-3"
+                className="btn btn-outline-warning btn-sm px-3"
                 download
               >
-                Downlaod CV
+                Download CV
               </a>
             </li>
           </ul>
