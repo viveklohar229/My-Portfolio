@@ -1,69 +1,128 @@
-import React, { useEffect, useState } from 'react';
-import '../App.css';
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import "../App.css";
 
 export default function Skills() {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setAnimate(true), 100); // delay to trigger animation
+    const timer = setTimeout(() => setAnimate(true), 300);
+    return () => clearTimeout(timer);
   }, []);
 
+  const skillCategories = [
+    {
+      title: "Frontend",
+      skills: [
+        { name: "React.js", width: 90 },
+        { name: "HTML5 & CSS3", width: 95 },
+        { name: "JavaScript", width: 80 },
+        { name: "TypeScript", width: 80 },
+        { name: "Bootstrap 5", width: 92 },
+        { name: "Material-UI", width: 85 },
+      ],
+    },
+    {
+      title: "Backend",
+      skills: [
+        { name: "Node.js", width: 88 },
+        { name: "Express.js", width: 85 },
+        { name: "MongoDB", width: 80 },
+        { name: "RESTful APIs", width: 90 },
+        { name: "Authentication & Authorization", width: 85 },
+        { name: "API Testing / Postman", width: 80 },
+      ],
+    },
+    {
+      title: "Tools & Other",
+      skills: [
+        { name: "Cloudinary", width: 85 },
+        { name: "Git & GitHub", width: 90 },
+        { name: "Responsive Design", width: 95 },
+        { name: "Firebase", width: 80 },
+        { name: "Flutter", width: 50 },
+        { name: "DevOps", width: 75 },
+      ],
+    },
+  ];
+
   return (
-    <section id="skills" className="py-5 fade-skill-in" style={{ minHeight: '100vh', backgroundColor: '#f8f9fa' }}>
+    <section
+      id="skills"
+      className="py-5"
+      style={{ minHeight: "100vh", background: "#0b132b", color: "#fff" }}
+    >
       <div className="container">
-        <h2 className="text-center mb-5">My Skills</h2>
+        <motion.h2
+          className="text-center mb-5 display-5 fw-bold"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          My Skills
+        </motion.h2>
+
         <div className="row">
-          {/* Frontend Skills */}
-          <div className="col-12 col-md-4 mb-4">
-            <h5 className="text-center text-md-start">Frontend</h5>
-            <Skill name="React.js" width="90%" animate={animate} />
-            <Skill name="HTML5 & CSS3" width="95%" animate={animate} />
-            <Skill name="JavaScript (ES6+)" width="90%" animate={animate} />
-            <Skill name="Bootstrap 5" width="92%" animate={animate} />
-            <Skill name="Material-UI" width="85%" animate={animate} />
-          </div>
+          {skillCategories.map((cat, idx) => (
+            <div className="col-12 col-md-4 mb-4" key={idx}>
+              <motion.h5
+                className="text-center text-md-start mb-4"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 + idx * 0.2 }}
+              >
+                {cat.title}
+              </motion.h5>
 
-          {/* Backend Skills */}
-          <div className="col-12 col-md-4 mb-4">
-            <h5 className="text-center text-md-start">Backend</h5>
-            <Skill name="Node.js" width="88%" animate={animate} />
-            <Skill name="Express.js" width="85%" animate={animate} />
-            <Skill name="MongoDB" width="80%" animate={animate} />
-            <Skill name="ASP.NET Core MVC" width="75%" animate={animate} />
-            <Skill name="RESTful APIs" width="90%" animate={animate} />
-          </div>
-
-          {/* Tools and Others */}
-          <div className="col-12 col-md-4 mb-4">
-            <h5 className="text-center text-md-start">Tools & Other</h5>
-            <Skill name="Cloudinary" width="85%" animate={animate} />
-            <Skill name="Git & GitHub" width="90%" animate={animate} />
-            <Skill name="Razorpay Integration" width="80%" animate={animate} />
-            <Skill name="Responsive Design" width="95%" animate={animate} />
-            <Skill name="Desktop Support" width="90%" animate={animate} />
-          </div>
+              {cat.skills.map((skill, i) => (
+                <Skill
+                  key={i}
+                  name={skill.name}
+                  width={skill.width}
+                  animate={animate}
+                  delay={i * 0.2}
+                />
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-function Skill({ name, width, animate }) {
+function Skill({ name, width, animate, delay }) {
   return (
-    <div className="mb-3">
-      <label className="d-block">{name}</label>
-      <div className="progress" style={{ height: '12px', borderRadius: '10px', background: '#e0e0e0' }}>
-        <div
-          className="progress-bar"
-          role="progressbar"
-          style={{
-            width: animate ? width : '0%',
-            background: 'linear-gradient(90deg, #007bff, #00c6ff)',
-            transition: 'width 2s ease-in-out',
-            borderRadius: '10px',
-          }}
-        ></div>
+    <motion.div
+      className="mb-4"
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: animate ? 1 : 0, x: animate ? 0 : -50 }}
+      transition={{ duration: 1, delay: delay }}
+    >
+      <div className="d-flex justify-content-between mb-1">
+        <span>{name}</span>
+        <span>{animate ? `${width}%` : "0%"}</span>
       </div>
-    </div>
+      <div
+        className="progress"
+        style={{
+          height: "14px",
+          borderRadius: "12px",
+          background: "#1c2541",
+          overflow: "hidden",
+        }}
+      >
+        <motion.div
+          className="progress-bar"
+          style={{
+            borderRadius: "12px",
+            background: "linear-gradient(90deg, #007bff, #00c6ff)",
+          }}
+          initial={{ width: 0 }}
+          animate={{ width: animate ? `${width}%` : "0%" }}
+          transition={{ duration: 1.5, delay: delay }}
+        />
+      </div>
+    </motion.div>
   );
 }

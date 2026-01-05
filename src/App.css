@@ -37,7 +37,6 @@
   }
 }
 
-/* Example: Basic styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -51,26 +50,60 @@ body {
   padding: 1rem 0;
 }
 
-/* Navbar styles */
-.navbar {
-  background-color: #333;
-  color: #fff;
-  padding: 1rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.floating-img {
+  animation: float 4s ease-in-out infinite;
 }
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
-.navbar ul li a {
-  color: #fff;
-  text-decoration: none;
+
+.navbar-transparent {
+  background: transparent;
+  transition: all 0.3s ease;
 }
+.navbar-scrolled {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+.navbar .nav-link {
+  color: #fff;
+  font-weight: 500;
+  position: relative;
+}
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: #ffc107;
+  transition: width 0.3s ease;
+}
+.navbar .nav-link:hover::after {
+  width: 100%;
+}
+.navbar-brand {
+  font-size: 1.4rem;
+}
+
+html {
+  scroll-padding-top: 80px;
+  scroll-behavior: smooth;
+}
+
 
 /* Hero Section */
 .hero-section {
