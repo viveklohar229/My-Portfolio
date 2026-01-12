@@ -1,15 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import "../App.css";
 
 export default function Skills() {
-  const [animate, setAnimate] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setAnimate(true), 300);
-    return () => clearTimeout(timer);
-  }, []);
-
   const skillCategories = [
     {
       title: "Frontend",
@@ -29,8 +21,7 @@ export default function Skills() {
         { name: "Express.js", width: 85 },
         { name: "MongoDB", width: 80 },
         { name: "RESTful APIs", width: 90 },
-        { name: "Authentication & Authorization", width: 85 },
-        { name: "API Testing / Postman", width: 80 },
+        { name: "Postman", width: 80 },
       ],
     },
     {
@@ -39,9 +30,6 @@ export default function Skills() {
         { name: "Cloudinary", width: 85 },
         { name: "Git & GitHub", width: 90 },
         { name: "Responsive Design", width: 95 },
-        { name: "Firebase", width: 80 },
-        { name: "Flutter", width: 50 },
-        { name: "DevOps", width: 75 },
       ],
     },
   ];
@@ -50,26 +38,33 @@ export default function Skills() {
     <section
       id="skills"
       className="py-5"
-      style={{ minHeight: "100vh", background: "#0b132b", color: "#fff" }}
+      style={{ 
+        minHeight: "100vh", 
+        background: "#0b132b", 
+        color: "#fff",
+        overflowX: "hidden" 
+      }}
     >
-      <div className="container">
+      <div className="container px-4">
         <motion.h2
           className="text-center mb-5 display-5 fw-bold"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-          My Skills
+          My <span className="text-warning">Skills</span>
         </motion.h2>
 
-        <div className="row">
+        <div className="row g-4">
           {skillCategories.map((cat, idx) => (
             <div className="col-12 col-md-4 mb-4" key={idx}>
               <motion.h5
-                className="text-center text-md-start mb-4"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 + idx * 0.2 }}
+                className="text-center text-md-start mb-4 fw-bold text-info"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
               >
                 {cat.title}
               </motion.h5>
@@ -79,8 +74,7 @@ export default function Skills() {
                   key={i}
                   name={skill.name}
                   width={skill.width}
-                  animate={animate}
-                  delay={i * 0.2}
+                  delay={i * 0.1}
                 />
               ))}
             </div>
@@ -91,38 +85,35 @@ export default function Skills() {
   );
 }
 
-function Skill({ name, width, animate, delay }) {
+function Skill({ name, width, delay }) {
   return (
-    <motion.div
-      className="mb-4"
-      initial={{ opacity: 0, x: -50 }}
-      animate={{ opacity: animate ? 1 : 0, x: animate ? 0 : -50 }}
-      transition={{ duration: 1, delay: delay }}
-    >
-      <div className="d-flex justify-content-between mb-1">
-        <span>{name}</span>
-        <span>{animate ? `${width}%` : "0%"}</span>
+    <div className="mb-4">
+      <div className="d-flex justify-content-between mb-2">
+        <span style={{ fontSize: "0.9rem", fontWeight: "500" }}>{name}</span>
+        <span className="text-warning small">{width}%</span>
       </div>
       <div
         className="progress"
         style={{
-          height: "14px",
-          borderRadius: "12px",
+          height: "8px", 
+          borderRadius: "10px",
           background: "#1c2541",
           overflow: "hidden",
+          border: "none"
         }}
       >
         <motion.div
           className="progress-bar"
           style={{
-            borderRadius: "12px",
-            background: "linear-gradient(90deg, #007bff, #00c6ff)",
+            borderRadius: "10px",
+            background: "linear-gradient(90deg, #ffc107, #ff8c00)", 
           }}
           initial={{ width: 0 }}
-          animate={{ width: animate ? `${width}%` : "0%" }}
-          transition={{ duration: 1.5, delay: delay }}
+          whileInView={{ width: `${width}%` }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: delay, ease: "easeOut" }}
         />
       </div>
-    </motion.div>
+    </div>
   );
 }

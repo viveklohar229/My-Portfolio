@@ -12,16 +12,15 @@ function Navbar() {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const yOffset = -80;
-      const y =
-        element.getBoundingClientRect().top +
-        window.pageYOffset +
-        yOffset;
+      const yOffset = -80; 
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
 
-      // 🔥 CLOSE MOBILE MENU AFTER CLICK
-      const nav = document.getElementById("navbarNav");
-      nav.classList.remove("show");
+      const navMenu = document.getElementById("navbarNav");
+      if (navMenu.classList.contains("show")) {
+        const bsCollapse = new window.bootstrap.Collapse(navMenu);
+        bsCollapse.hide();
+      }
     }
   };
 
@@ -29,37 +28,42 @@ function Navbar() {
 
   return (
     <nav
-      className={`navbar navbar-expand-lg fixed-top ${
-        scrolled ? "navbar-scrolled" : "navbar-transparent"
+      className={`navbar navbar-expand-lg fixed-top transition-all ${
+        scrolled ? "navbar-dark bg-dark shadow-lg" : "navbar-dark bg-transparent"
       }`}
+      style={{ transition: "0.3s ease-in-out" }}
     >
       <div className="container">
         <a
-          className="navbar-brand fw-bold text-white"
+          className="navbar-brand fw-bold"
           href="#home"
+          style={{ fontSize: "1.5rem", color: "#ffc107" }}
           onClick={(e) => {
             e.preventDefault();
             scrollToSection("home");
           }}
         >
-          Vivek Vishwakarma
+          VIVEK
         </a>
 
         <button
-          className="navbar-toggler border-0"
+          className="navbar-toggler border-0 shadow-none"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto text-center">
+          <ul className="navbar-nav ms-auto text-center py-4 py-lg-0">
             {menuItems.map((item) => (
               <li className="nav-item" key={item}>
                 <a
-                  className="nav-link text-white px-3 text-capitalize"
+                  className="nav-link text-white px-3 text-capitalize fw-semibold"
                   href={`#${item}`}
                   onClick={(e) => {
                     e.preventDefault();
@@ -71,10 +75,10 @@ function Navbar() {
               </li>
             ))}
 
-            <li className="nav-item mt-2 mt-lg-0 ms-lg-3">
+            <div className="d-flex flex-column flex-lg-row gap-2 ms-lg-3 mt-3 mt-lg-0 px-4 px-lg-0">
               <a
                 href="#contact"
-                className="btn btn-warning btn-sm px-3"
+                className="btn btn-warning btn-sm fw-bold"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection("contact");
@@ -82,20 +86,30 @@ function Navbar() {
               >
                 Hire Me
               </a>
-            </li>
-
-            <li className="nav-item mt-2 mt-lg-0 ms-lg-3">
               <a
-                href="./vivekExperience.pdf"
-                className="btn btn-outline-warning btn-sm px-3"
+                href="./vivek6Months.pdf"
+                className="btn btn-outline-warning btn-sm"
                 download
               >
                 Download CV
               </a>
-            </li>
+            </div>
           </ul>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 991.98px) {
+          .navbar-collapse {
+            background: rgba(11, 19, 43, 0.95); /* Dark semi-transparent bg */
+            border-radius: 15px;
+            margin-top: 15px;
+            padding: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+          }
+        }
+      `}</style>
     </nav>
   );
 }

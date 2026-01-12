@@ -12,6 +12,7 @@ import ScrollToTopButton from './Components/ScrollToTopButton';
 function App() {
   return (
     <>
+      <div className="portfolio-wrapper" style={{ overflowX: "hidden", width: "100vw" }}>
       <Navbar />
       <Hero />
       <Skills/>
@@ -20,6 +21,7 @@ function App() {
       <Contact />
       <Footer />
       <ScrollToTopButton />
+    </div>
     </>
   );
 }

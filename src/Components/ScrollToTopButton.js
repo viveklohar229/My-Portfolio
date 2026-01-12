@@ -13,7 +13,6 @@ export default function ScrollToTopButton() {
     };
 
     window.addEventListener('scroll', toggleVisibility);
-
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
@@ -32,32 +31,56 @@ export default function ScrollToTopButton() {
           aria-label="Scroll to top"
           className="scroll-to-top"
         >
-          &#8679;
+          <span>&#8679;</span>
         </button>
       )}
 
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .scroll-to-top {
           position: fixed;
-          bottom: 40px;
-          right: 40px;
-          background-color: #007bff;
+          bottom: 25px; /* Mobile par thoda upar */
+          right: 20px;  /* Mobile par kinare se thoda door */
+          background-color: #ffc107; /* Aapke theme ka warning color */
           border: none;
           border-radius: 50%;
-          width: 50px;
-          height: 50px;
-          font-size: 28px;
-          color: white;
+          width: 45px;  /* Mobile friendly size */
+          height: 45px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          color: #0b132b; /* Contrast color */
           cursor: pointer;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-          transition: background-color 0.3s ease, transform 0.3s ease;
-          z-index: 1000;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+          transition: all 0.3s ease;
+          z-index: 9999; /* Sabse upar dikhne ke liye */
         }
+
         .scroll-to-top:hover {
-          background-color: #0056b3;
-          transform: scale(1.1);
+          background-color: #e5ac00;
+          transform: translateY(-5px);
         }
-      `}</style>
+
+        /* Desktop specific adjustments */
+        @media (min-width: 768px) {
+          .scroll-to-top {
+            bottom: 40px;
+            right: 40px;
+            width: 50px;
+            height: 50px;
+          }
+        }
+
+        /* Animation for appearance */
+        @keyframes fadeIn {
+          from { opacity: 0; transform: scale(0.5); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        
+        .scroll-to-top {
+          animation: fadeIn 0.3s ease-out;
+        }
+      `}} />
     </>
   );
 }

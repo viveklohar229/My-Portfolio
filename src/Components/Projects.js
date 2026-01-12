@@ -5,106 +5,102 @@ export default function Projects() {
   const projectList = [
     {
       title: "AERODutyPro - FlyX",
-      description:
-        "A live aviation operations application handling flight schedules, pilot duty limits, DGCA compliance, and real-time flight data monitoring.",
+      description: "A live aviation operations application handling flight schedules, pilot duty limits, and DGCA compliance.",
       github: "#",
       live: "#",
       type: "company",
     },
     {
       title: "AERODutyPro - TrainX",
-      description:
-        "Crew training and license management system with automated alerts, schedule tracking, and document management to ensure audit compliance.",
+      description: "Crew training and license management system with automated alerts and schedule tracking.",
       github: "#",
       live: "#",
       type: "company",
     },
     {
       title: "AERODutyPro - Master Application",
-      description:
-        "Centralized admin module for aircraft, crew, and flight operations. Powers FlyX and TrainX applications with live production data.",
+      description: "Centralized admin module for aircraft and crew. Powers FlyX and TrainX applications.",
       github: "#",
       live: "#",
       type: "company",
     },
     {
-      title: "ViniDashboard (Admin Template)",
-      description:
-        "A sleek and responsive admin dashboard template built with React and Bootstrap, featuring dynamic charts, user management, and real-time data updates for seamless admin control.",
+      title: "ViniDashboard",
+      description: "Sleek responsive admin dashboard with React and Bootstrap, featuring dynamic charts.",
       github: "https://github.com/viveklohar229/adminvinidashpanel",
       live: "https://vinidashboard.onrender.com/",
       type: "personal",
     },
     {
-      title: "ViniStore (Client E-Commerce)",
-      description:
-        "A full-stack e-commerce platform with React frontend and Node.js backend, including product browsing, shopping cart, secure payment integration, and user profiles.",
+      title: "ViniStore",
+      description: "Full-stack e-commerce platform with secure payment integration and user profiles.",
       github: "https://github.com/viveklohar229/vinistore",
       live: "https://vinistore.netlify.app/",
       type: "personal",
     },
     {
-      title: "Get Me Chai Coffee",
-      description:
-        "A specialized web app for tea and coffee lovers, showcasing a variety of blends, ordering features, and personalized recommendations, built with modern web technologies.",
-      github: "https://github.com/viveklohar229/getChaiCoffee",
-      live: "https://getchaicoffee.onrender.com/",
-      type: "personal",
-    },
-
-    {
       title: "YouTube Clone",
-      description:
-        "A YouTube-like frontend platform with video browsing, search, and responsive UI. Built for learning and showcase purposes.",
+      description: "A YouTube-like frontend platform with video browsing and search functionality.",
       github: "https://github.com/viveklohar229/yt-clone",
       live: "https://viniyoutubeclone.netlify.app/",
       type: "personal",
     },
-    {
-      title: "Spotify Clone",
-      description:
-        "Spotify frontend clone with playlist features, search, and responsive design using React.",
-      github: "https://github.com/viveklohar229/spotify-clone",
-      live: "https://vinispotifyclone.netlify.app/",
-      type: "personal",
-    },
-
-    
   ];
 
   const cardVariants = {
-    offscreen: { y: 50, opacity: 0 },
-    onscreen: { y: 0, opacity: 1, transition: { type: "spring", bounce: 0.2, duration: 0.8 } },
+    offscreen: { y: 30, opacity: 0 },
+    onscreen: { 
+      y: 0, 
+      opacity: 1, 
+      transition: { type: "spring", bounce: 0.2, duration: 0.6 } 
+    },
   };
 
   return (
     <section
       id="projects"
       className="py-5"
-      style={{ minHeight: "100vh", backgroundColor: "#0b132b", color: "#fff" }}
+      style={{ 
+        minHeight: "100vh", 
+        backgroundColor: "#0b132b", 
+        color: "#fff",
+        overflowX: "hidden" 
+      }}
     >
-      <div className="container">
+      <div className="container px-4">
         <h2 className="text-center mb-5 display-5 fw-bold">Projects</h2>
-        <div className="row justify-content-center">
+        
+        <div className="row justify-content-center g-4">
           {projectList.map((project, index) => (
-            <div className="col-12 col-md-6 col-lg-4 mb-4" key={index}>
+            <div className="col-12 col-md-6 col-lg-4 d-flex" key={index}>
               <motion.div
-                className="card h-100 shadow-lg border-0"
+                className="card w-100 shadow-lg border-0"
                 variants={cardVariants}
                 initial="offscreen"
                 whileInView="onscreen"
-                viewport={{ once: true, amount: 0.3 }}
-                style={{ background: "#1c2541", borderRadius: "15px" }}
-                whileHover={{ scale: 1.05 }}
+                viewport={{ once: true, amount: 0.2 }}
+                style={{ 
+                  background: "#1c2541", 
+                  borderRadius: "15px",
+                  overflow: "hidden" 
+                }}
+                whileHover={{ scale: 1.02 }} 
+                whileTap={{ scale: 0.98 }}
               >
-                <div className="card-body d-flex flex-column">
-                  <h5 className="card-title text-warning">{project.title}</h5>
-                  <p className="text-white flex-grow-1">{project.description}</p>
-                  <div className="mt-auto">
+                <div className="card-body d-flex flex-column p-4">
+                  <div className="d-flex justify-content-between align-items-start mb-2">
+                    <h5 className="card-title text-warning fw-bold mb-0">{project.title}</h5>
+                  </div>
+                  
+                  <p className="text-light opacity-75 small flex-grow-1 mb-4" style={{ lineHeight: "1.5" }}>
+                    {project.description}
+                  </p>
+                  
+                  <div className="d-flex flex-wrap gap-2 mb-3">
                     {project.github !== "#" && (
                       <a
                         href={project.github}
-                        className="btn btn-outline-light me-2 mb-2"
+                        className="btn btn-outline-light btn-sm px-3"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -114,7 +110,7 @@ export default function Projects() {
                     {project.live !== "#" && (
                       <a
                         href={project.live}
-                        className="btn btn-warning mb-2"
+                        className="btn btn-warning btn-sm px-3 fw-bold"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -122,17 +118,19 @@ export default function Projects() {
                       </a>
                     )}
                   </div>
-                  <span
-                    className={`badge ${
-                      project.type === "personal"
-                        ? "bg-primary"
-                        : project.type === "company"
-                        ? "bg-success"
-                        : "bg-info"
-                    } mt-3`}
-                  >
-                    {project.type.toUpperCase()}
-                  </span>
+
+                  <div className="mt-2">
+                    <span
+                      className={`badge ${
+                        project.type === "personal"
+                          ? "bg-primary"
+                          : "bg-success"
+                      } rounded-pill px-3 py-2`}
+                      style={{ fontSize: "0.7rem", letterSpacing: "1px" }}
+                    >
+                      {project.type.toUpperCase()}
+                    </span>
+                  </div>
                 </div>
               </motion.div>
             </div>

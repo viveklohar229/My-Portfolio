@@ -8,47 +8,40 @@ function Footer() {
         color: "#fff",
         paddingTop: "50px",
         paddingBottom: "20px",
+        overflowX: "hidden", 
       }}
     >
-      <div className="container">
-        <div className="row text-center text-md-start">
+      <div className="container px-4">
+        <div className="row text-center text-md-start g-4">
           
           {/* About Me */}
-          <div className="col-12 col-md-4 mb-4">
-            <h5 className="mb-3 fw-bold">About Me</h5>
-            <p style={{ lineHeight: "1.6" }}>
+          <div className="col-12 col-md-4">
+            <h5 className="mb-3 fw-bold" style={{ color: "#ffc107" }}>About Me</h5>
+            <p style={{ lineHeight: "1.6", fontSize: "0.9rem" }}>
               Passionate Full-Stack Web Developer building scalable web applications.  
-              Experienced in <strong>React, TypeScript, Tailwind CSS, MUI</strong> and real-world production projects.  
+              Experienced in <strong>React, TypeScript, and Tailwind CSS</strong>.  
               Always eager to learn and create meaningful projects.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div className="col-12 col-md-4 mb-4">
-            <h5 className="mb-3 fw-bold">Quick Links</h5>
-            <ul className="list-unstyled d-flex flex-column flex-md-row justify-content-center justify-content-md-start gap-2 gap-md-4">
+          <div className="col-12 col-md-4">
+            <h5 className="mb-3 fw-bold" style={{ color: "#ffc107" }}>Quick Links</h5>
+            <ul className="list-unstyled d-flex flex-column gap-2">
               <li>
-                <a href="#skills" className="footer-link">
-                  Skills
-                </a>
+                <a href="#skills" className="footer-link">Skills</a>
               </li>
               <li>
-                <a href="#projects" className="footer-link">
-                  Projects
-                </a>
+                <a href="#projects" className="footer-link">Projects</a>
               </li>
               <li>
-                <a href="#contact" className="footer-link">
-                  Contact
-                </a>
+                <a href="#contact" className="footer-link">Contact</a>
               </li>
             </ul>
           </div>
 
-          {/* Social */}
-          <div className="col-12 col-md-4 mb-4">
-            <h5 className="mb-3 fw-bold">Follow Me</h5>
-            <div className="d-flex justify-content-center justify-content-md-start gap-3">
+          <div className="col-12 col-md-4">
+            <h5 className="mb-3 fw-bold" style={{ color: "#ffc107" }}>Follow Me</h5>
+            <div className="d-flex justify-content-center justify-content-md-start gap-4">
               <a
                 href="https://github.com/viveklohar229"
                 target="_blank"
@@ -67,38 +60,37 @@ function Footer() {
               >
                 <i className="fab fa-linkedin fa-2x"></i>
               </a>
-          
             </div>
           </div>
         </div>
 
-        <hr className="border-secondary mt-4" />
+        <hr className="border-secondary mt-5" />
 
-        <div className="text-center small mt-3">
+        <div className="text-center small mt-3 opacity-75">
           &copy; {new Date().getFullYear()} Vivek Vishwakarma. All rights reserved.
         </div>
       </div>
 
-]      <style jsx>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .footer-link {
           color: #fff;
           text-decoration: none;
-          transition: color 0.3s ease, transform 0.3s ease;
+          transition: all 0.3s ease;
+          display: inline-block;
         }
         .footer-link:hover {
-          color: #00c6ff;
-          transform: translateY(-3px);
+          color: #ffc107 !important;
+          transform: translateX(5px);
         }
         .social-icon {
           color: #fff;
-          transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+          transition: all 0.3s ease;
         }
         .social-icon:hover {
-          color: #00c6ff;
-          transform: scale(1.3);
-          text-shadow: 0 0 8px #00c6ff;
+          color: #ffc107 !important;
+          transform: translateY(-5px);
         }
-      `}</style>
+      `}} />
     </footer>
   );
 }
