@@ -44,7 +44,6 @@ function Hero() {
                   />
                 </span>
               </div>
-
               <h1 className="fw-bold mt-2 display-5 display-md-4" style={{ minHeight: "100px" }}>
                 <span className="me-2">Hi, I'm</span>
                 <br className="d-md-none" />
@@ -53,8 +52,14 @@ function Hero() {
                     options={{
                       strings: [
                         "Vivek Vishwakarma",
-                        "Frontend Developer",
-                        "MERN Stack Developer",
+                        "Data Analyst",
+                        "Data Visualizatio",
+                        "ETL pipeline",
+                        "Data Transformation",
+                        "Data Modeling",
+                        "Power BI Dashboard ",
+                        "Python Data Analyst",
+                        "SQL Data Analyst"
                       ],
                       autoStart: true,
                       loop: true,

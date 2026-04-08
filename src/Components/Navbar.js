@@ -87,7 +87,7 @@ function Navbar() {
                 Hire Me
               </a>
               <a
-                href="./vivek6Months.pdf"
+                href="./DataResume.pdf"
                 className="btn btn-outline-warning btn-sm"
                 download
               >

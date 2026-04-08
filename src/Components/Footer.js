@@ -1,4 +1,3 @@
-import React from "react";
 
 function Footer() {
   return (
@@ -8,19 +7,20 @@ function Footer() {
         color: "#fff",
         paddingTop: "50px",
         paddingBottom: "20px",
-        overflowX: "hidden", 
+        overflowX: "hidden",
       }}
     >
       <div className="container px-4">
         <div className="row text-center text-md-start g-4">
-          
-          {/* About Me */}
+
           <div className="col-12 col-md-4">
             <h5 className="mb-3 fw-bold" style={{ color: "#ffc107" }}>About Me</h5>
             <p style={{ lineHeight: "1.6", fontSize: "0.9rem" }}>
-              Passionate Full-Stack Web Developer building scalable web applications.  
-              Experienced in <strong>React, TypeScript, and Tailwind CSS</strong>.  
-              Always eager to learn and create meaningful projects.
+              Passionate Data Analyst and Full-Stack Developer with experience in building
+              data-driven solutions and scalable web applications. Skilled in
+              <strong> Python, SQL, Excel, Power BI</strong> along with
+              <strong> React and Node.js</strong>.
+              I enjoy transforming raw data into meaningful insights and creating impactful projects.
             </p>
           </div>
 
@@ -71,7 +71,8 @@ function Footer() {
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .footer-link {
           color: #fff;
           text-decoration: none;

@@ -2,38 +2,54 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export default function Skills() {
-  const skillCategories = [
-    {
-      title: "Frontend",
-      skills: [
-        { name: "React.js", width: 90 },
-        { name: "HTML5 & CSS3", width: 95 },
-        { name: "JavaScript", width: 80 },
-        { name: "TypeScript", width: 80 },
-        { name: "Bootstrap 5", width: 92 },
-        { name: "Material-UI", width: 85 },
-      ],
-    },
-    {
-      title: "Backend",
-      skills: [
-        { name: "Node.js", width: 88 },
-        { name: "Express.js", width: 85 },
-        { name: "MongoDB", width: 80 },
-        { name: "RESTful APIs", width: 90 },
-        { name: "Postman", width: 80 },
-      ],
-    },
-    {
-      title: "Tools & Other",
-      skills: [
-        { name: "Cloudinary", width: 85 },
-        { name: "Git & GitHub", width: 90 },
-        { name: "Responsive Design", width: 95 },
-      ],
-    },
-  ];
+ const skillCategories = [
+  {
+    title: "Frontend",
+    skills: [
+      { name: "React.js", width: 90 },
+      { name: "HTML5 & CSS3", width: 95 },
+      { name: "JavaScript", width: 80 },
+      { name: "TypeScript", width: 80 },
+      { name: "Bootstrap 5", width: 92 },
+      { name: "Material-UI", width: 85 },
+    ],
+  },
+  {
+    title: "Backend",
+    skills: [
+      { name: "Node.js", width: 88 },
+      { name: "Express.js", width: 85 },
+      { name: "MongoDB", width: 80 },
+      { name: "RESTful APIs", width: 90 },
+      { name: "Postman", width: 80 },
+    ],
+  },
 
+  
+  {
+    title: "Data Analytics",
+    skills: [
+      { name: "Python", width: 90 },
+      { name: "SQL (MySQL)", width: 88 },
+      { name: "Microsoft Excel", width: 92 },
+      { name: "Power BI", width: 90 },
+      { name: "Pandas", width: 88 },
+      { name: "NumPy", width: 85 },
+      { name: "Data Cleaning", width: 90 },
+      { name: "Data Visualization", width: 92 },
+      { name: "KPI Analysis", width: 85 },
+    ],
+  },
+
+  {
+    title: "Tools & Other",
+    skills: [
+      { name: "Cloudinary", width: 85 },
+      { name: "Git & GitHub", width: 90 },
+      { name: "Responsive Design", width: 95 },
+    ],
+  },
+];
   return (
     <section
       id="skills"

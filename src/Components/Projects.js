@@ -4,6 +4,27 @@ import { motion } from "framer-motion";
 export default function Projects() {
   const projectList = [
     {
+      title: "Sales Data Analytics Dashboard",
+      description: "End-to-end data analytics pipeline using Excel, Python, SQL and Power BI. Cleaned and transformed 10,000+ records, built SQL queries and created an interactive dashboard to track sales trends and KPIs.",
+      github: "https://github.com/viveklohar229/viveklohar229/blob/main/README.md",
+      live: "#",
+      type: "personal",
+    },
+    {
+      title: "Vendor Performance Analytics",
+      description: "Analyzed vendor performance using Python, SQL and Power BI. Built datasets, performed data cleaning and created dashboards to track revenue, profitability and vendor KPIs.",
+      github: "https://github.com/viveklohar229/Vendor-Performance-Analysis",
+      live: "#",
+      type: "personal",
+    },
+    {
+      title: "Amazon Global Sales Dashboard",
+      description: "Developed a Power BI dashboard to analyze global sales and profitability. Used Power Query and DAX to clean data and generate business insights with interactive visualizations.",
+      github: "https://github.com/viveklohar229/viveklohar229/blob/main/README.md",
+      live: "#",
+      type: "personal",
+    },
+    {
       title: "AERODutyPro - FlyX",
       description: "A live aviation operations application handling flight schedules, pilot duty limits, and DGCA compliance.",
       github: "#",
@@ -49,10 +70,10 @@ export default function Projects() {
 
   const cardVariants = {
     offscreen: { y: 30, opacity: 0 },
-    onscreen: { 
-      y: 0, 
-      opacity: 1, 
-      transition: { type: "spring", bounce: 0.2, duration: 0.6 } 
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", bounce: 0.2, duration: 0.6 }
     },
   };
 
@@ -60,16 +81,16 @@ export default function Projects() {
     <section
       id="projects"
       className="py-5"
-      style={{ 
-        minHeight: "100vh", 
-        backgroundColor: "#0b132b", 
+      style={{
+        minHeight: "100vh",
+        backgroundColor: "#0b132b",
         color: "#fff",
-        overflowX: "hidden" 
+        overflowX: "hidden"
       }}
     >
       <div className="container px-4">
         <h2 className="text-center mb-5 display-5 fw-bold">Projects</h2>
-        
+
         <div className="row justify-content-center g-4">
           {projectList.map((project, index) => (
             <div className="col-12 col-md-6 col-lg-4 d-flex" key={index}>
@@ -79,23 +100,23 @@ export default function Projects() {
                 initial="offscreen"
                 whileInView="onscreen"
                 viewport={{ once: true, amount: 0.2 }}
-                style={{ 
-                  background: "#1c2541", 
+                style={{
+                  background: "#1c2541",
                   borderRadius: "15px",
-                  overflow: "hidden" 
+                  overflow: "hidden"
                 }}
-                whileHover={{ scale: 1.02 }} 
+                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="card-body d-flex flex-column p-4">
                   <div className="d-flex justify-content-between align-items-start mb-2">
                     <h5 className="card-title text-warning fw-bold mb-0">{project.title}</h5>
                   </div>
-                  
+
                   <p className="text-light opacity-75 small flex-grow-1 mb-4" style={{ lineHeight: "1.5" }}>
                     {project.description}
                   </p>
-                  
+
                   <div className="d-flex flex-wrap gap-2 mb-3">
                     {project.github !== "#" && (
                       <a
@@ -121,11 +142,10 @@ export default function Projects() {
 
                   <div className="mt-2">
                     <span
-                      className={`badge ${
-                        project.type === "personal"
+                      className={`badge ${project.type === "personal"
                           ? "bg-primary"
                           : "bg-success"
-                      } rounded-pill px-3 py-2`}
+                        } rounded-pill px-3 py-2`}
                       style={{ fontSize: "0.7rem", letterSpacing: "1px" }}
                     >
                       {project.type.toUpperCase()}
